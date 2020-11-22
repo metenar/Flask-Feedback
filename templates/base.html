@@ -10,9 +10,13 @@
 <body>
     <nav class="navbar navbar-light bg-primary justify-content-between ">
         <div class="container">
+          {% if session['user_name'] %}
+          <a href="/users/{{session['user_name']}}" class="navbar-brand text-light">Feedback App</a>
+          {% else %}
           <a href="/" class="navbar-brand text-light">Feedback App</a>
+          {% endif %}
           <ul class="nav navbar-nav flex-row float-right">
-            {% if session['user_id'] %}
+            {% if session['user_name'] %}
             <li class="nav-item">
               <a class="nav-link pr-3 text-light" href="/logout">{{ session['user_name'] }}/Logout</a>
             </li>
